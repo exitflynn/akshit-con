@@ -34,7 +34,7 @@
       width: auto;
       height: auto;
       transform: translateX(-50%) translateY(-50%);
-      object-fit: cover;
+      object-fit: contain;
       z-index: 0;
     }
 
@@ -170,6 +170,21 @@
       .hero-content {
         padding: 0 1rem;
       }
+
+      .hero-video {
+        width: 100vw; /* Full viewport width */
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: contain; /* This ensures the whole video is visible */
+        min-width: unset;
+        min-height: unset;
+      }
+
+      .hero-container {
+        background: #000; /* Ensure black background for letterboxing */
+      }
     }
 
     /* Smaller phones */
@@ -260,7 +275,7 @@
   <div id="main-content" class="max-w-3xl mx-auto p-6 mt-8">
     <section class="mb-10">
       <p class="text-lg">
-        Throughout history, names have been more than mere labels; they have served as the nexus of identity, culture, and, at times, silent revolutions. The Alexanders of the world have had their empires, the Napoleons their continental ambitions, the Churchills their oratory and cigars. But what of the Akshits?
+        Throughout history, names have been more than mere labels; they have served as the nexus of identity, culture, and, at times, silent revolutions. The Alexanders of the world have had their empires, the Galileos their telescopes and the Vincents their starry nights. But what of the Akshits?
 
 For too long, we have remained fragmented—our shared nomenclature unspoken, our collective potential unrealized. This year, that changes.
 
@@ -444,7 +459,7 @@ It is with great pride that we announce Akshit-Con '25—the first and only glob
       setTimeout(() => {
         heroContent.style.display = 'none';
       }, 1000);
-    }, 30000); // 30 seconds
+    }, 20000); // 20 seconds
 
     // Handle video end - this will keep the last frame visible
     video.addEventListener('ended', () => {
