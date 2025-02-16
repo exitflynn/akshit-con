@@ -248,14 +248,10 @@
   <div class="hero-container">
     <video class="hero-video" autoplay muted playsinline>
       <source src="./assets/akshit-con-announcement.mp4" type="video/mp4"/>
-      <!-- fallback message -->
       Your browser does not support HTML5 video.
     </video>
-    <div class="hero-content">
-      <h1>Akshit-Con '25</h1>
-      <p class="text-lg">A Strategic Call to Action for All Akshits</p>
+    <div id="heroContent" class="hero-content">
       <a href="#main-content" class="mt-6 gold-button">WELL DAMN</a>
-      <!-- Mute/Unmute toggle button -->
       <button id="muteButton" class="mute-button">Unmute</button>
     </div>
   </div>
@@ -433,12 +429,27 @@ It is with great pride that we announce Akshit-Con '25—the first and only glob
   <script>
     const video = document.querySelector('.hero-video');
     const muteButton = document.getElementById('muteButton');
+    const heroContent = document.getElementById('heroContent');
     const form = document.getElementById('registrationForm');
     const easterEgg = document.getElementById('easterEgg');
 
     // Video starts muted for autoplay
-    // So initial button text can be 'Unmute'
     muteButton.textContent = video.muted ? 'Unmute' : 'Mute';
+
+    // Hide overlay after 30 seconds
+    setTimeout(() => {
+      heroContent.style.transition = 'opacity 1s ease-out';
+      heroContent.style.opacity = '0';
+      // After fade out, remove from DOM to prevent interaction
+      setTimeout(() => {
+        heroContent.style.display = 'none';
+      }, 1000);
+    }, 30000); // 30 seconds
+
+    // Handle video end - this will keep the last frame visible
+    video.addEventListener('ended', () => {
+      video.currentTime = video.duration;  // Set to last frame
+    });
 
     muteButton.addEventListener('click', () => {
       if (video.muted) {
