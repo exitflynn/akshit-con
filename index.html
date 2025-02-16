@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Akshit-Con '25</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Font, color, and general vibe */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.8;
+    }
+
+    /* Fullscreen video container styling */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      height: 100vh; /* Full viewport height */
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    /* Hero content overlay */
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4); /* Slight overlay for readability */
+    }
+
+    /* Neon text effects */
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      color: #fff;
+      font-size: 4.5rem;
+      text-shadow: 0 0 7px #fff,
+                 0 0 10px #fff,
+                 0 0 21px #fff,
+                 0 0 42px #f9bc02,
+                 0 0 82px #f9bc02,
+                 0 0 92px #f9bc02,
+                 0 0 102px #f9bc02,
+                 0 0 151px #f9bc02;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      color: #f9bc02;
+      letter-spacing: 0.1em;
+      text-shadow: 0 0 10px rgba(249,188,2,0.5);
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+
+    /* Scholarly text styling */
+    p {
+      font-family: 'Crimson Text', serif;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+      hyphens: auto;
+      white-space: pre-wrap;
+    }
+
+    /* First letter styling for paragraphs */
+    section p:first-of-type::first-letter {
+      font-size: 3.5em;
+      float: left;
+      line-height: 0.8;
+      padding-right: 0.1em;
+      color: #f9bc02;
+      text-shadow: 0 0 5px rgba(249,188,2,0.5);
+    }
+
+    /* List styling */
+    ul.list-disc li {
+      font-family: 'Crimson Text', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+
+    /* Subtle glow for section borders */
+    section {
+      border-bottom: 1px solid rgba(249,188,2,0.2);
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px -6px rgba(249,188,2,0.3);
+    }
+
+    /* Gold accent for buttons */
+    .gold-button {
+      background: #f9bc02;
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.25rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+    .gold-button:hover {
+      background: #ffc20e;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(249,188,2,0.3);
+    }
+
+    /* Mute/Unmute button styling */
+    .mute-button {
+      margin-top: 1rem;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      transition: all 0.2s;
+      color: #fff;
+    }
+    .mute-button:hover {
+      background: rgba(255,255,255,0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fullscreen Hero Section with Video -->
+  <div class="hero-container">
+    <video class="hero-video" autoplay muted playsinline>
+      <source src="./assets/akshit-con-announcement.mp4" type="video/mp4"/>
+      <!-- fallback message -->
+      Your browser does not support HTML5 video.
+    </video>
+    <div class="hero-content">
+      <h1>Akshit-Con '25</h1>
+      <p class="text-lg">A Strategic Call to Action for All Akshits</p>
+      <a href="#main-content" class="mt-6 gold-button">WELL DAMN</a>
+      <!-- Mute/Unmute toggle button -->
+      <button id="muteButton" class="mute-button">Unmute</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div id="main-content" class="max-w-3xl mx-auto p-6 mt-8">
+    <section class="mb-10">
+      <p class="text-lg">
+        Throughout history, names have been more than mere labels; they have served as the nexus of identity, culture, and, at times, silent revolutions. The Alexanders of the world have had their empires, the Napoleons their continental ambitions, the Churchills their oratory and cigars. But what of the Akshits?
+
+For too long, we have remained fragmented—our shared nomenclature unspoken, our collective potential unrealized. This year, that changes.
+
+It is with great pride that we announce Akshit-Con ‘25—the first and only global convention exclusively for individuals named Akshit. A summit of ideas, an agora of discourse, a council of the like-named. This is not merely an event; it is a movement. A moment in history where all Akshits, regardless of background, profession, or temperament, will come together in a grand symposium of unparalleled significance.
+      </p>
+      <h2 class="text-2xl font-semibold mb-2">Why Akshit-Con?</h2>
+      <p class="text-lg">
+        Much like the Non-Aligned Movement of the mid-20th century, Akshit-Con stands as a forum that transcends traditional divisions. We do not belong to one industry, one ideology, or one worldview. We belong only to Akshit-ness. Here, we can engage in unfettered discussions about the Akshit condition—its trials, its triumphs, and its implications for the future.
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-2">Event Details</h2>
+      <ul class="list-disc pl-5 text-lg space-y-2">
+        <li><strong>When:</strong> March 6, 2025</li>
+        <li><strong>What Time:</strong> Waking hours, Rest assured, you <i>will</i> know when the time is right.</li>
+        <li><strong>What manner:</strong> Mysterious, TBD, Stay tuned.</li>
+        <li><strong>Do you have the time for doing this:</strong> You ask too many questions.</li>
+      </ul>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-2">The Real Deets: For Akshits' Eyes Only</h2>
+      <p class="text-lg mb-4">
+        This section contains classified information intended solely for individuals bearing the name Akshit. 
+        To verify your Akshit status, please click below.
+      </p>
+      <button id="revealButton" class="gold-button w-full mb-4">Verify Akshit Status</button>
+      
+      <div id="secretContent" class="hidden">
+        <div class="p-4 bg-gray-800 rounded-md mb-6">
+          <p class="text-sm italic text-gray-400 mb-4">You know what Im lazy with these forms. Welcome, fellow Akshit, you may read on. For all the non-Akshits who clicked that button, look upon the Akshits' works ye mighty.</p>
+        </div>
+
+        <!-- Previously added sections now hidden by default -->
+        <section class="mb-10">
+          <h2 class="text-2xl font-semibold mb-2">The Akshit Resolution: A Manifesto for the Ages</h2>
+          <p class="text-lg">
+            At the pinnacle of our gathering, we shall draft what future historians will undoubtedly recognize as one of the most significant documents of our time: The Akshit Resolution. This declaration, to be ceremonially signed with the gravitas typically reserved for international peace treaties, will codify the fundamental rights and responsibilities of all Akshits worldwide.
+
+            The resolution's key tenets, drafted after months of rigorous debate among leading Akshit scholars, include:
+
+            • The Inalienable Right to Explain One's Name in Every Social Interaction
+            • The Sacred Duty to Support Fellow Akshits in Times of Name-Based Distress
+            • The Solemn Pledge to Elevate the Global Perception of Akshitness
+
+            Each signatory shall receive a ceremonial quill pen, later to be donated to their local museum of choice.
+          </p>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="text-2xl font-semibold mb-2">The Global Akshit Census Initiative</h2>
+          <p class="text-lg">
+            In what may be the most ambitious demographic study ever attempted, we launch a comprehensive worldwide survey to map every known Akshit. Our research will answer pressing questions that have puzzled anthropologists for generations:
+
+            Where do Akshits tend to cluster? What professions do they gravitate toward? Why is there an unexplained concentration of Akshits in Sec-62, Noida? (Data pending verification)
+          </p>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="text-2xl font-semibold mb-2">Akshit-Lore: The Founding Myth</h2>
+          <p class="text-lg">
+            Legend speaks of Akshit the Elder, a 3rd-century BCE philosopher whose radical ideas about nominal determinism led to his exile from the ancient academy. His writings, while completely fictional, are strangely persuasive.
+
+            This historical narrative is currently pending review on Wikipedia, where it has been flagged seventeen times for "citation needed" and "dubious claims." We maintain that the absence of evidence is not evidence of absence, particularly when it comes to ancient Akshit history.
+          </p>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="text-2xl font-semibold mb-2">The Naming Tribunal</h2>
+          <p class="text-lg">
+            Perhaps the most solemn responsibility of Akshit-Con lies in its Naming Tribunal—a panel of distinguished Akshits who evaluate applications from individuals bearing similar nomenclature (e.g., Anubhav, Anujesh, Akash) for honorary inclusion in the Akshit Circle.
+
+            Proceedings follow the format of a traditional court, albeit with significantly more gravitas and slightly less legal validity. Applicants must present their case before the tribunal, with evidence, and preference shall be given on basis of The A-Team Conformity and Levenshtein Distances.
+
+            The tribunal maintains a strict policy of judicial review, though its decisions are binding only in the metaphysical sense.
+          </p>
+        </section>
+      </div>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-semibold mb-2">Who Can Attend?</h2>
+        <p class="text-lg mb-4">
+          Entry is simple yet rigorous. To qualify, one must meet the following criterion:
+  
+          Be named Akshit.
+  
+          There will be no exceptions. Anyone named Ashkit, Akshita, or (heaven forbid) Akass will be gently but firmly escorted from the premises. This is not out of exclusionary intent, but rather out of a commitment to the purity of the Akshit discourse.
+          If your name is Akshit, you belong here. Register below.
+        </p>
+        <form id="registrationForm">
+          <input type="text" placeholder="Your First Name" class="w-full p-3 text-black rounded-md mb-3"/>
+          <button type="submit" class="w-full gold-button">Register</button>
+        </form>
+        <div id="easterEgg" class="hidden mt-4 p-4 bg-gray-800 rounded-md">
+          <p class="text-sm italic text-gray-400">Oh damn you actually went there huh, I was too lazy to set up a proper form - here's the real registration link:</p>
+          <a href="https://forms.gle/LmZ8NyLLydMACNjm7" target="_blank" class="text-gold hover:underline">Google Form Registration</a>
+        </div>
+      </section>
+  
+    <section class="mb-10">
+        <h2 class="text-2xl font-semibold mb-2">Propose a Talk or Panel</h2>
+        <p class="text-lg mb-4">
+          Have a goated idea? Submit your panel proposal below. 
+          All topics welcome, from the profound to the peculiar.
+        </p>
+        <form id="panelForm" class="space-y-4">
+          <input type="text" placeholder="Your First Name (must be Akshit)" class="w-full p-3 text-black rounded-md"/>
+          <textarea placeholder="Panel Description (be as pretentious as you'd like)" class="w-full p-3 text-black rounded-md h-32"></textarea>
+          <button type="submit" class="w-full gold-button">Submit Panel Proposal</button>
+        </form>
+        <div id="panelEasterEgg" class="hidden mt-4 p-4 bg-gray-800 rounded-md">
+          <p class="text-sm italic text-gray-400">Oh, you actually want to submit an idea? You are very real for this. Here's the real submission form:</p>
+          <a href="https://forms.gle/iY2gikYztsa9MHvE9" target="_blank" class="text-gold hover:underline">Google Form Panel Submission</a>
+        </div>
+    </section>
+    
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-2">Alliances & Partners</h2>
+      <p class="text-lg mb-6">
+        In our relentless pursuit of Akshitcellence, we have some real fine institutions backing us:
+      </p>
+      
+      <div class="space-y-8">
+        <!-- Media Partner -->
+        <div class="bg-black bg-opacity-50 p-6 rounded-lg border border-[#f9bc02] border-opacity-20">
+          <h3 class="text-[#f9bc02] text-xl mb-2">Official Media Partner</h3>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-lg font-semibold mb-1">Dinesh Tripathi Fan Club</p>
+              <p class="text-gray-300 text-sm italic">Documenting excellence since whenever they started doing that</p>
+            </div>
+            <a href="https://instagram.com/dineshtripathifanclub" 
+               target="_blank" 
+               class="gold-button text-sm">
+              Follow Updates
+            </a>
+          </div>
+        </div>
+
+        <!-- Community Partner -->
+        <div class="bg-black bg-opacity-50 p-6 rounded-lg border border-[#f9bc02] border-opacity-20">
+          <h3 class="text-[#f9bc02] text-xl mb-2">Community Partner</h3>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-lg font-semibold mb-1">Akshit Tyagi Updates</p>
+              <p class="text-gray-300 text-sm italic">The premier source for all things Akshit-adjacent</p>
+            </div>
+            <a href="https://whatsapp.com/channel/0029VanvrUU0LKZIY2jQM229" 
+               target="_blank" 
+               class="gold-button text-sm">
+              Join Community
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="text-center py-6 mt-10 border-t border-gray-700">
+    <p>© 2025 The A-Team. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Toggle Script -->
+  <script>
+    const video = document.querySelector('.hero-video');
+    const muteButton = document.getElementById('muteButton');
+    const form = document.getElementById('registrationForm');
+    const easterEgg = document.getElementById('easterEgg');
+
+    // Video starts muted for autoplay
+    // So initial button text can be 'Unmute'
+    muteButton.textContent = video.muted ? 'Unmute' : 'Mute';
+
+    muteButton.addEventListener('click', () => {
+      if (video.muted) {
+        video.muted = false;
+        muteButton.textContent = 'Mute';
+      } else {
+        video.muted = true;
+        muteButton.textContent = 'Unmute';
+      }
+    });
+
+    // Easter egg form handler
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      easterEgg.classList.remove('hidden');
+    });
+
+    // Add secret content reveal
+    const revealButton = document.getElementById('revealButton');
+    const secretContent = document.getElementById('secretContent');
+    
+    revealButton.addEventListener('click', () => {
+      // No actual verification, just dramatic effect
+      revealButton.textContent = 'Verifying...';
+      setTimeout(() => {
+        revealButton.textContent = 'Access Granted';
+        revealButton.disabled = true;
+        secretContent.classList.remove('hidden');
+        // Smooth scroll to revealed content
+        secretContent.scrollIntoView({ behavior: 'smooth' });
+      }, 1500); // Dramatic pause
+    });
+
+    // Panel form easter egg
+    const panelForm = document.getElementById('panelForm');
+    const panelEasterEgg = document.getElementById('panelEasterEgg');
+    
+    panelForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      panelEasterEgg.classList.remove('hidden');
+      // Smooth scroll to easter egg
+      panelEasterEgg.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
+
